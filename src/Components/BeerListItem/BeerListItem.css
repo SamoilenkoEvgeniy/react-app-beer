@@ -1,0 +1,23 @@
+.Home-container .crop {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.card {
+    margin-bottom: 22px;
+}
+
+.Home-container .card img {
+    max-width: 100%;
+}
+
+.Home-container .card .card-title {
+    min-height: 48px;
+}
+
+.Home-container  .card .card-text {
+    min-height: 96px;
+    max-height: 96px;
+    overflow: hidden;
+}
