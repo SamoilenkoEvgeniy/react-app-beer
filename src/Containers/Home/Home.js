@@ -12,7 +12,7 @@ class Home extends Component {
 
     this.loadMore = this.loadMore.bind(this);
     this.state = {
-      page: 0
+      page: this.props.page
     };
   }
 
@@ -34,6 +34,7 @@ class Home extends Component {
     this.setState((state, props) => (
       {page: state.page + 1}
     ));
+    this.props.dispatch(beersActions.pageChange());
   }
 
   renderLoading() {
@@ -43,6 +44,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.page);
     if (!this.props.beers.length || this.props.isLoading) return this.renderLoading();
     return (
       <div className="Home-container container-fluid">
@@ -61,7 +63,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   beers: state.beers.beers,
-  isLoading: state.beers.isLoading
+  isLoading: state.beers.isLoading,
+  page: state.beers.page,
 });
 
 export default connect(mapStateToProps)(Home);

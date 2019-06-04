@@ -2,7 +2,8 @@ import * as types from './actionTypes';
 
 const initialState = {
   beers: [],
-  isLoading: false
+  isLoading: false,
+  page: 1
 };
 
 export default function reduce(state = initialState, action = {}) {
@@ -12,6 +13,8 @@ export default function reduce(state = initialState, action = {}) {
     case types.BEERS_LOADED:
     case types.BEERS_LOADING:
       return {...state, isLoading: action.isLoading};
+    case types.BEERS_PAGE_CHANGE:
+      return {...state, page: action.page};
     default:
       return state;
   }

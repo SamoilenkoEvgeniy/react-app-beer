@@ -14,6 +14,9 @@ export function fetchBeers(page) {
   };
 }
 
-export function nextPage() {
-  
+export function pageChange() {
+  return (dispatch, getState) => {
+    const page = getState().beers.page;
+    dispatch({type: types.BEERS_PAGE_CHANGE, page: page + 1});
+  }
 }
