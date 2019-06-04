@@ -14,9 +14,9 @@ export function fetchBeers(page) {
   };
 }
 
-export function pageChange() {
+export function pageChange(page = 0) {
   return (dispatch, getState) => {
-    const page = getState().beers.page;
-    dispatch({type: types.BEERS_PAGE_CHANGE, page: page + 1});
+    dispatch({type: types.BEERS_PAGE_CHANGE, page: page});
+    dispatch(fetchBeers(page));
   }
 }

@@ -18,23 +18,17 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.setState((state, props) => (
-      {page: state.page + 1}
-    ));
+    this.props.dispatch(beersActions.fetchBeers(this.props.page));
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
-      this.props.dispatch(beersActions.fetchBeers(this.state.page));
       window.scrollTo(0, 0);
     }
   }
 
   loadMore() {
-    this.setState((state, props) => (
-      {page: state.page + 1}
-    ));
-    this.props.dispatch(beersActions.pageChange());
+    this.props.dispatch(beersActions.pageChange(this.props.page + 1));
   }
 
   render() {
