@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import * as beersActions from '../../Store/beers/actions';
 import BeerList from "../../Components/BeerList/BeerList";
+import Loading from "../../Components/Loading/Loading";
 import './Home.css';
 
 class Home extends Component {
@@ -17,7 +18,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // this.props.dispatch(beersActions.fetchBeers(this.state.page));
     this.setState((state, props) => (
       {page: state.page + 1}
     ));
@@ -37,15 +37,8 @@ class Home extends Component {
     this.props.dispatch(beersActions.pageChange());
   }
 
-  renderLoading() {
-    return (
-      <p>Loading...</p>
-    );
-  }
-
   render() {
-    console.log(this.props.page);
-    if (!this.props.beers.length || this.props.isLoading) return this.renderLoading();
+    if (!this.props.beers.length || this.props.isLoading) return (<Loading/>);
     return (
       <div className="Home-container container-fluid">
         <div className="row">
